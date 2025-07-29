@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AdminDashboard from './pages/Admin/AdminDashboard';
-import HeroSlider from './components/HeroSlider';
+import HomePage from './pages/HomePage';
 import ProductCatalog from './pages/ProductCatalog';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './components/Cart';
@@ -59,7 +59,7 @@ const App = () => {
       <FloatingActionButton />
       <QuickActionsRail />
       <Routes>
-        <Route path="/" element={<HeroSlider />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/products" element={<ProductCatalog />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<CartPage />} />

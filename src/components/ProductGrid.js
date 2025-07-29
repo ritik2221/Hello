@@ -4,7 +4,7 @@ import axios from 'axios';
 import { CartContext } from '../context/CartContext';
 import './ProductGrid.css';
 
-const ProductGrid = ({ selectedCategory }) => {
+const ProductGrid = ({ selectedCategory, searchQuery }) => {
   const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
 
@@ -19,9 +19,19 @@ const ProductGrid = ({ selectedCategory }) => {
       });
   }, []);
 
-  const filteredProducts = selectedCategory
-    ? products.filter((product) => product.category === selectedCategory)
-    : products;
+  const filteredProducts = products
+    .filter((product) => {
+      if (selectedCategory) {
+        return product.category === selectedCategory;
+      }
+      return true;
+    })
+    .filter((product) => {
+      if (searchQuery) {
+        return product.name.toLowerCase().includes(searchQuery.toLowerCase());
+      }
+      return true;
+    });
 
   return (
     <div className="product-grid">
