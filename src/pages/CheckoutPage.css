@@ -1,0 +1,24 @@
+.checkout-page {
+  padding: 20px;
+}
+
+.checkout-progress {
+  margin: 20px 0;
+  font-size: 1.2rem;
+}
+
+.checkout-content {
+  display: flex;
+  gap: 20px;
+}
+
+.shipping-form {
+  flex: 2;
+}
+
+.order-summary {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
