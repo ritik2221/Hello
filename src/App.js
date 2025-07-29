@@ -10,6 +10,10 @@ import CheckoutPage from './pages/CheckoutPage';
 import AuthModal from './components/AuthModal';
 import DashboardPage from './pages/DashboardPage';
 import SecureRoute from './components/SecureRoute';
+import FloatingActionButton from './components/FloatingActionButton';
+import QuickActionsRail from './components/QuickActionsRail';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 import { CartContext } from './context/CartContext';
 import { AuthContext } from './context/AuthContext';
 
@@ -32,6 +36,8 @@ const App = () => {
         <nav>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
           {user && <Link to="/dashboard">Dashboard</Link>}
         </nav>
         <div className="user-actions">
@@ -50,12 +56,16 @@ const App = () => {
       </header>
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
       <Cart isOpen={isCartOpen} onClose={toggleCart} />
+      <FloatingActionButton />
+      <QuickActionsRail />
       <Routes>
         <Route path="/" element={<HeroSlider />} />
         <Route path="/products" element={<ProductCatalog />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route
           path="/dashboard"
           element={
