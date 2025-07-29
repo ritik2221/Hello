@@ -1,0 +1,62 @@
+.product-detail {
+  padding: 20px;
+}
+
+.product-detail-content {
+  display: flex;
+  gap: 20px;
+}
+
+.product-images {
+  flex: 1;
+}
+
+.main-image {
+  max-width: 100%;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.selectors {
+  margin: 20px 0;
+}
+
+.selectors label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.actions button {
+  margin-right: 10px;
+}
+
+.product-tabs {
+  margin-top: 20px;
+}
+
+.tab-headers {
+  display: flex;
+  gap: 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.tab-headers h3 {
+  padding-bottom: 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-headers h3.active {
+  border-bottom-color: black;
+}
+
+.tab-content {
+  padding: 20px 0;
+}
