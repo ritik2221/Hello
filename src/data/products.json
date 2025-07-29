@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Leather Sneakers",
+    "description": "A pair of timeless leather sneakers that combine style and comfort. Perfect for everyday wear.",
+    "price": 79.99,
+    "category": "Sneakers",
+    "imageUrl": "https://example.com/images/sneakers.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Rugged Hiking Boots",
+    "description": "Durable and waterproof hiking boots designed for the toughest trails. Provides excellent ankle support.",
+    "price": 129.99,
+    "category": "Boots",
+    "imageUrl": "https://example.com/images/boots.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Elegant High Heels",
+    "description": "A stunning pair of high heels that will elevate any evening outfit. Features a sleek design and a comfortable footbed.",
+    "price": 99.99,
+    "category": "Heels",
+    "imageUrl": "https://example.com/images/heels.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Casual Slip-On Shoes",
+    "description": "Easy-to-wear slip-on shoes that are perfect for a casual day out. Made from breathable materials.",
+    "price": 59.99,
+    "category": "Sneakers",
+    "imageUrl": "https://example.com/images/slip-ons.jpg"
+  }
+]
