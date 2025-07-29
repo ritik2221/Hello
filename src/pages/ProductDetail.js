@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import products from '../data/products.json';
+import axios from 'axios';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = products.find((p) => p.id === parseInt(id));
+  const [product, setProduct] = useState(null);
   const [activeTab, setActiveTab] = useState('reviews');
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/products/${id}`)
+      .then((response) => {
+        setProduct(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
 
   if (!product) {
     return <div>Product not found</div>;

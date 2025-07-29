@@ -1,11 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import products from '../data/products.json';
+import axios from 'axios';
 import { CartContext } from '../context/CartContext';
 import './ProductGrid.css';
 
 const ProductGrid = ({ selectedCategory }) => {
   const { addToCart } = useContext(CartContext);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/products/')
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const filteredProducts = selectedCategory
     ? products.filter((product) => product.category === selectedCategory)
@@ -14,8 +26,8 @@ const ProductGrid = ({ selectedCategory }) => {
   return (
     <div className="product-grid">
       {filteredProducts.map((product) => (
-        <div key={product.id} className="product-card">
-          <Link to={`/products/${product.id}`}>
+        <div key={product._id} className="product-card">
+          <Link to={`/products/${product._id}`}>
             <img src={product.imageUrl} alt={product.name} />
             <h3>{product.name}</h3>
             <p>${product.price}</p>
