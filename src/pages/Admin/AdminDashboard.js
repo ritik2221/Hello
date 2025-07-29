@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductList from './ProductList';
 import ProductForm from './ProductForm';
 import './admin.css';
-import initialProducts from '../../data/products.json';
+import axios from 'axios';
 
 const AdminDashboard = () => {
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/products/')
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleAddProduct = () => {
     setSelectedProduct(null);
@@ -21,19 +32,22 @@ const AdminDashboard = () => {
 
   const handleSaveProduct = (productData) => {
     if (selectedProduct) {
-      // Update existing product
-      setProducts(
-        products.map((p) => (p.id === selectedProduct.id ? { ...p, ...productData } : p))
-      );
+      axios
+        .post(`http://localhost:5000/products/update/${selectedProduct._id}`, productData)
+        .then((res) => console.log(res.data));
     } else {
-      // Add new product
-      setProducts([...products, { ...productData, id: Date.now() }]);
+      axios
+        .post('http://localhost:5000/products/add', productData)
+        .then((res) => console.log(res.data));
     }
     setIsFormVisible(false);
   };
 
   const handleDeleteProduct = (productId) => {
-    setProducts(products.filter((p) => p.id !== productId));
+    axios
+      .delete(`http://localhost:5000/products/${productId}`)
+      .then((res) => console.log(res.data));
+    setProducts(products.filter((p) => p._id !== productId));
   };
 
   const handleCancel = () => {
