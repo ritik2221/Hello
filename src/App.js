@@ -14,6 +14,7 @@ import FloatingActionButton from './components/FloatingActionButton';
 import QuickActionsRail from './components/QuickActionsRail';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import Footer from './components/Footer';
 import { CartContext } from './context/CartContext';
 import { AuthContext } from './context/AuthContext';
 
@@ -58,31 +59,34 @@ const App = () => {
       <Cart isOpen={isCartOpen} onClose={toggleCart} />
       <FloatingActionButton />
       <QuickActionsRail />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/products" element={<ProductCatalog />} />
-        <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route
-          path="/dashboard"
-          element={
-            <SecureRoute>
-              <DashboardPage />
-            </SecureRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <SecureRoute>
-              <AdminDashboard />
-            </SecureRoute>
-          }
-        />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductCatalog />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <SecureRoute>
+                <DashboardPage />
+              </SecureRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <SecureRoute>
+                <AdminDashboard />
+              </SecureRoute>
+            }
+          />
+        </Routes>
+      </main>
+      <Footer />
     </Router>
   );
 };
