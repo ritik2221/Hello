@@ -10,7 +10,7 @@ const ProductGrid = ({ selectedCategory, searchQuery }) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/products/')
+      .get(`${process.env.REACT_APP_API_URL}/products/`)
       .then((response) => {
         setProducts(response.data);
       })

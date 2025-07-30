@@ -10,7 +10,7 @@ const ProductDetail = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/products/${id}`)
+      .get(`${process.env.REACT_APP_API_URL}/products/${id}`)
       .then((response) => {
         setProduct(response.data);
       })

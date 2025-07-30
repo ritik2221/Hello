@@ -30,6 +30,9 @@ This is a full-stack e-commerce platform for selling footwear. It includes a mod
     *   Mongoose
     *   CORS
     *   Dotenv
+*   **Deployment:**
+    *   Nix
+    *   Heroku
 
 ## Getting Started
 
@@ -37,8 +40,11 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-*   Node.js and npm installed
-*   MongoDB installed and running
+*   **For the Frontend (Nix Environment):**
+    *   A Nix-based development environment (e.g., Replit).
+*   **For the Backend:**
+    *   Node.js and npm installed.
+    *   A MongoDB database (local or a free cloud instance from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)).
 
 ### Installation
 
@@ -46,30 +52,33 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     git clone https://github.com/your_username_/your_repository.git
     ```
-2.  **Install frontend dependencies:**
-    ```sh
-    npm install
-    ```
-3.  **Install backend dependencies:**
+2.  **Install backend dependencies:**
     ```sh
     cd server
     npm install
     ```
+3.  **Install frontend dependencies:**
+    *   In a Nix-based environment, the dependencies specified in `dev.nix` should be installed automatically when you open the shell.
 
 ### Running the Application
 
-1.  **Start the backend server:**
-    ```sh
-    cd server
-    npm start
-    ```
-    The backend server will start on `http://localhost:5000`.
+1.  **Configure the Backend:**
+    *   In the `server` directory, create a `.env` file.
+    *   Add your MongoDB connection string to the `.env` file:
+        ```
+        ATLAS_URI=your_mongodb_connection_string
+        ```
+    *   Start the backend server:
+        ```sh
+        cd server
+        npm start
+        ```
+        The backend server will start on `http://localhost:5000`.
 
-2.  **Start the frontend server:**
-    ```sh
-    npm start
-    ```
-    The frontend application will open in your browser at `http://localhost:3000`.
+2.  **Configure the Frontend:**
+    *   Open the `dev.nix` file in the root directory.
+    *   Replace the placeholder `your_heroku_backend_url_goes_here` with the URL of your deployed backend server (or `http://localhost:5000` for local development).
+    *   The frontend application should start automatically in a Nix-based environment when you open a preview.
 
 ## Project Structure
 
@@ -89,6 +98,7 @@ To get a local copy up and running, follow these simple steps.
 │   ├── routes/
 │   ├── index.js
 │   └── package.json
+├── dev.nix
 └── package.json
 ```
 
